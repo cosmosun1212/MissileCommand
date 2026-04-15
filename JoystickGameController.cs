@@ -1,4 +1,4 @@
-//IGameContoller interface 조이스틱 
+//IGameController interface를 통한 조이스틱 입력
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
