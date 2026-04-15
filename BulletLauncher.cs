@@ -1,18 +1,17 @@
-//마우스입력, 키보드 입력 //강한 결합
-using System.Collections; using System.Collections.Generic; using UnityEngine;
-public class BulletLauncher : MonoBehaviour 
+public class BulletLauncher : MonoBehaviour
 { 
-  // Start is called before the first frame update 
-  void Start() 
+  IGameController controller;
+  private void Start()
   {
+      controller = new MouseGameController();
   }
 
   // Update is called once per frame
   void Update()
   {
-      if(Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
-      { 
-          Debug.Log("총알 발사!!!");
-      }
+          if (controller.FireButtonPressed())
+          {
+              Debug.Log("Fired a bullet!");
+          }
   }
 }
