@@ -1,3 +1,5 @@
+//Dependency Injection  코드 추가
+
 using System.Collections; 
 using System.Collections.Generic; 
 using UnityEngine;
