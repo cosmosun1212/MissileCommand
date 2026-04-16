@@ -1,11 +1,20 @@
-//IGameController interface에 의한 키보드 입력
-using System.Collections;
-using System.Collections.Generic;
+using System; 
+using System.Collections; 
+using System.Collections.Generic; 
 using UnityEngine;
-public class KeyGameController : IGameController
+
+public class KeyGameController : MonoBehaviour, IGameController 
 {
-  public bool FireButtonPressed()
-  {
-    return Input.GetKeyDown(KeyCode.Space);
-  }
+    public Action FireButtonPressed;
+    
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (FireButtonPressed != null)
+            {
+                FireButtonPressed();
+            }
+        }
+    }
 }
