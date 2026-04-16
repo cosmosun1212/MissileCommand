@@ -6,11 +6,13 @@ using UnityEngine;
 public class BulletLauncher : MonoBehaviour 
 { 
   IGameController controller;
+
   public void SetGameController(IGameController controller)
   {
       this.controller = controller;
   }
-  
+
+  //Dependecy Injection으로 전환할 경우 //Start()함수 삭제
   private void Start()
   {
       controller = new MouseGameController();
