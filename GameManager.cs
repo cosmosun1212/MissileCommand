@@ -1,7 +1,7 @@
-//
 using System.Collections; 
 using System.Collections.Generic; 
 using UnityEngine;
+
 public class GameManager : MonoBehaviour 
 { 
     [SerializeField] 
@@ -10,10 +10,14 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update 
     void Start() 
     { 
-        launcher = Instantiate(launcherPrefab); 
-        launcher.SetGameController(new MouseGameController()); //Dependency Injection 코드
-        //launcher.SetGameController(new KeyGameController()); //BulletLauncher launcher 하나로 하나의 입력만
+        launcher = Instantiate(launcherPrefab);
+        MouseGameController mouseController = gameObject.AddComponent<MouseGameController>();
+        mouseController.FireButtonPressed += launcher.OnFireButtonPressed;
+    
+        KeyGameController keyController = gameObject.AddComponent<KeyGameController>();
+        keyController.FireButtonPressed += launcher.OnFireButtonPressed;
     }
+    
     // Update is called once per frame
     void Update()
     {
