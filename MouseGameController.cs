@@ -1,11 +1,20 @@
-//IGameController interface를 통한 마우스 입력
-using System.Collections;
-using System.Collections.Generic;
+using System; 
+using System.Collections; 
+using System.Collections.Generic; 
 using UnityEngine;
-public class MouseGameController : IGameController
+
+public class MouseGameController : MonoBehaviour, IGameController 
 {
-  public bool FireButtonPressed()
-  {
-    return Input.GetMouseButtonDown(0);
-  }
+    public Action FireButtonPressed;
+    
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (FireButtonPressed != null)
+            {
+                FireButtonPressed();
+            }
+        }
+    }
 }
